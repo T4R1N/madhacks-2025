@@ -3,7 +3,7 @@
   "version":"1.0",
   "name":"Simon Listens",
   "description": "Browse the web at the speed of sound",
-  "permissions":["tabs"],
+  "permissions":["tabs", "storage"],
   "host_permissions": [
     "http://*/*",
     "https://*/*"

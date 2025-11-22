@@ -1,6 +1,8 @@
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'A') {
-    alert("you pressed A");
-    console.log("you pressed A");
-  }
+    chrome.storage.local.get('listenKey').then((result) => {
+        if (e.key === result.listenKey) {
+            alert("Simon is listening");
+            console.log(`you pressed ${result.listenKey}`);
+        }
+    });
 });
