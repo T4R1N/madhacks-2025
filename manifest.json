@@ -8,6 +8,12 @@
     "http://*/*",
     "https://*/*"
   ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"], 
+      "js": ["key_handler.js"]  
+    }
+  ],
   "background": {
     "service_worker": "background.js"
   }
