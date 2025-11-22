@@ -25,31 +25,26 @@ function setNewSimonButton(e) {
     document.removeEventListener('keydown', setNewSimonButton);
 };
 
-function toggleListening() {
+
+
+
+function listenButtonClicked() {
+    let button = document.getElementById('toggleListenButton');
+    let indication = document.getElementById('indicator');
     chrome.storage.local.get('listening', function (result) {
-        console.log(result.listening);
         const currentValue = result.listening;
         const newValue = !currentValue; // Toggle the value
         console.log(newValue);
         // Set the new boolean value
         chrome.storage.local.set({ listening: newValue });
-        return newValue;
+        if (newValue == true) {
+            button.setAttribute('aria-pressed', 'false');
+            indication.textContent= "Simon IS Listening";
+            indication.style.color = "green";
+        } else {
+            button.setAttribute('aria-pressed', 'true');
+            indication.textContent= "Simon is NOT Listening";
+            indication.style.color = "red";
+        }
     });
-};
-
-
-async function listenButtonClicked() {
-    let button = document.getElementById('toggleListenButton');
-    let indication = document.getElementById('indicator');
-    let isListening = await toggleListening();
-    console.log(isListening);
-    if (isListening == 'true') {
-        button.setAttribute('aria-pressed', 'false');
-        indication.textContent= "Simon IS Listening";
-        indication.style.color = "green";
-    } else {
-        button.setAttribute('aria-pressed', 'true');
-        indication.textContent= "Simon is NOT Listening";
-        indication.style.color = "red";
-    }
 };
