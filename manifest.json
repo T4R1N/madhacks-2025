@@ -3,8 +3,6 @@
   "version":"1.0",
   "name":"Simon Listens",
   "description": "Browse the web at the speed of sound",
-  "default_locale": "en",
-  "homepage_url": "popup.html",
   "permissions":["tabs"],
   "host_permissions": [
     "http://*/*",

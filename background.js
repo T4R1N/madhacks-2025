@@ -1,5 +1,5 @@
-document.addEventListener('keydown', (e) => {
+self.addEventListener('keydown', (e) => {
   if (e.key === 'A') {
-    console.log("you pressed A") 
+    console.log("you pressed A");
   }
 });
