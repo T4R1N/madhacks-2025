@@ -1,1 +1,5 @@
-alert("The test extension is up and running");
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'A') {
+    console.log("you pressed A") 
+  }
+});
