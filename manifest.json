@@ -2,12 +2,12 @@
   "manifest_version":3,
   "version":"1.0",
   "name":"Simon Listens",
-  "content_scripts":[
-    {
-     "matches":["<all_urls>"],
-     "js":["main.js"],
-     "run_at": "document_start"
-    }
+  "permissions":["tabs"],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
   ],
-  "permissions": ["activeTab"]
+  "background": {
+    "service_worker": "background.js"
+  }
 }
