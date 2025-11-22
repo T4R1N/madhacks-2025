@@ -1,0 +1,23 @@
+body {
+    background-color: lightblue;
+}
+
+h1 {
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 60px;
+    font-style: italic;
+}
+
+li {
+    font-size: 20px;
+}
+
+button {
+    background-color: yellow;
+    font-size: 20px;
+}
+
+.description {
+    font-size: 25px;
+}
