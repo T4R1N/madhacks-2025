@@ -24,7 +24,7 @@ const createNewTabFunctionDeclaration = {
 };
 
 function createNewTab( url, active = true ) {
-    chrome.tabs.create({ url: url }, { active: active });
+    chrome.tabs.create({ url: url , active: active });
 };
 
 /**

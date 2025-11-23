@@ -136,6 +136,7 @@ async function callAI(prompt) {
       if (functionCalls.length > 0) {
         for (const funcCall of functionCalls) {
           let args = funcCall.args ?? funcCall.arguments;
+          console.log("Args: " + args);
           if (typeof args !== 'object' || args === null) continue;
           const funcToRun = functionImplementations[funcCall.name];
           if (funcToRun) {
