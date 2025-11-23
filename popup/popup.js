@@ -1,10 +1,12 @@
 
 document.addEventListener("DOMContentLoaded", (e) => {
     chrome.storage.local.set({ listening: false });
-    chrome.storage.local.set({ listenKey: 'R'});
     let indication = document.getElementById('keybindIndicator');
 
     chrome.storage.local.get('listenKey').then((result) => {
+        if (result.key == null) {
+            chrome.storage.local.set({ listenKey: 'R'});
+        }
         indication.textContent = 'Current keybind: ' + result.listenKey;
     });
     console.log("Loaded");
