@@ -38,7 +38,6 @@ async function transcribeAudio(audioBlob) {
 
   const result = await response.json();
   console.log("Background: Transcription result:", result);
-  callAI(result);
   
   return result;
 }

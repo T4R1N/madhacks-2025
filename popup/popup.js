@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
         console.log("Listening for user input");
         document.addEventListener('keydown', setNewSimonButton);
     });
-    document.getElementById('toggleListenButton').addEventListener('click', listenButtonClicked);
 })
 
 
@@ -56,15 +55,3 @@ function listenButtonClicked() {
     });
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-const input = document.getElementById("prompt");
-const mirror = document.getElementById("mirror");
-
-function resizeInput() {
-    mirror.textContent = input.value || input.placeholder;
-    input.style.width = mirror.offsetWidth + 12 + "px";
-}
-
-input.addEventListener("input", resizeInput);
-resizeInput();
-});
