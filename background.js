@@ -3,7 +3,7 @@ import {
   functionImplementations
 } from './functions.js';
 
-const GEM_API_KEY = `AIzaSyCHR0L-P6dX3rjas5mJcWeF7fI_8v5RX6Q`;
+const GEM_API_KEY = `insert gemini api key here`;
 // function saveKey() {
 //   const key = 'sk-AIzaSyCFNgJBbM-R0Uptk1UAIGPcNk1rQxJL7A8';
 //   if (key && key.startsWith('sk-')) {
@@ -36,7 +36,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
 
 async function transcribeAudio(audioBlob) {
-  const fishApiKey = `7762de4215b74c1fa64e7e83a98e10f8`;
+  const fishApiKey = `insert fish api key here`;
   
   console.log("Background: Starting transcription...");
   console.log("Background: Blob size:", audioBlob.size, "type:", audioBlob.type);
