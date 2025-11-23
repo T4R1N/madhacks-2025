@@ -3,7 +3,7 @@ import {
   functionImplementations
 } from './functions.js';
 
-const GEM_API_KEY = `sk-AIzaSyCFNgJBbM-R0Uptk1UAIGPcNk1rQxJL7A8`;
+const GEM_API_KEY = `AIzaSyCFNgJBbM-R0Uptk1UAIGPcNk1rQxJL7A8`;
 // function saveKey() {
 //   const key = 'sk-AIzaSyCFNgJBbM-R0Uptk1UAIGPcNk1rQxJL7A8';
 //   if (key && key.startsWith('sk-')) {
@@ -25,8 +25,15 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       .then(result => sendResponse({ success: true, result }))
       .catch(error => sendResponse({ success: false, error: error.message }));
     return true; // Keep channel open for async
+  } else if (request.action === "send_prompt") {
+    callAI(request.prompt);
+    console.log("What is the prompt? " + request.prompt);
+    return true; // Keep channel open for async
   }
 });
+
+
+
 
 async function transcribeAudio(audioBlob) {
   const fishApiKey = "bcda3e3389e54ae2bcc965572a75288d";
@@ -55,7 +62,6 @@ async function transcribeAudio(audioBlob) {
 
   const result = await response.json();
   console.log("Background: Transcription result:", result);
-  callAI(result);
   
   return result;
 }
@@ -77,8 +83,8 @@ function extractFunctionCalls(response) {
       const parts = cand?.content?.parts || cand?.content?.parts || cand?.content;
       if (!parts) continue;
       for (const p of parts) {
-        if (p.functionCall || p.functoin_call) {
-          returnr [p.functionCall || p.function_call];
+        if (p.functionCall || p.function_call) {
+          return [p.functionCall || p.function_call];
         }
       }
     }

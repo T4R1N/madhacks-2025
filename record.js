@@ -74,6 +74,8 @@ function SetupStream(stream) {
     const base64Audio = reader.result;
     
     console.log("Sending to background for transcription...");
+    let prompt;
+    
     chrome.runtime.sendMessage(
       { 
         action: "transcribe", 
@@ -82,14 +84,25 @@ function SetupStream(stream) {
       },
       (response) => {
         if (response && response.success) {
-          alert("Transcription: " + response.result.text);
+          prompt = response.result.text;
+          console.log("Transcription: " + prompt);
           console.log("Duration:", response.result.duration);
-        } else {
+          chrome.runtime.sendMessage(
+          {
+            action:"send_prompt",
+            prompt: prompt
+          },
+          (response) => {
+            console.log("Received response from send_prompt: " + response);
+          }
+        )} else {
           alert("Transcription failed: " + (response?.error || "Unknown error"));
           console.error("Error:", response);
         }
       }
     );
+
+    
   };
   reader.readAsDataURL(blob);
 
