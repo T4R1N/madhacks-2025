@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "UnboundedFont";
+    src: url("Unbounded-VariableFont_wght.ttf") format('truetype');
+}
+
 body {
     background-image: url("crown_pattern.jpg");
     width: 600px;
@@ -34,4 +39,5 @@ button {
 
 .description {
     font-size: 20px;
+    font-family: 'UnboundedFont', serif;
 }
