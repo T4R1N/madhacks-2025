@@ -1,7 +1,7 @@
 {
   "manifest_version":3,
   "version":"1.0",
-  "name":"Simon Listens",
+  "name":"Simon Listens and Responds",
   "description": "Browse the web at the speed of sound",
   "permissions":["tabs", "storage"],
   "host_permissions": [
@@ -14,7 +14,7 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"], 
-      "js": ["key_handler.js"]  
+      "js": ["key_handler.js", "record.js"]  
     }
   ],
   "background": {
