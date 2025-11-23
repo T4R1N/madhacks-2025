@@ -1,6 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", (e) => {
     chrome.storage.local.set({ listening: false });
+    chrome.storage.local.set({ listenKey: 'R'});
     let indication = document.getElementById('keybindIndicator');
 
     chrome.storage.local.get('listenKey').then((result) => {
@@ -22,16 +23,17 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
 
 function setNewSimonButton(e) {
-    chrome.storage.local.set({listenKey: e.key});
-    let indication = document.getElementById('keybindIndicator');
+    if (e.key != "Shift") {
+        chrome.storage.local.set({listenKey: e.key});
+        let indication = document.getElementById('keybindIndicator');
 
-    chrome.storage.local.get('listenKey').then((result) => {
-        console.log(`New listen key: ${result.listenKey}`);
-        indication.textContent = 'Current keybind: ' + result.listenKey;
-    });
+        chrome.storage.local.get('listenKey').then((result) => {
+            console.log(`New listen key: ${result.listenKey}`);
+            indication.textContent = 'Current keybind: ' + result.listenKey;
+        });
 
-
-    document.removeEventListener('keydown', setNewSimonButton);
+        document.removeEventListener('keydown', setNewSimonButton);
+    }
 };
 
 function listenButtonClicked() {
