@@ -9,7 +9,8 @@
     "https://*/*"
   ],
   "action": {
-    "default_popup": "popup/popup.html"
+    "default_popup": "popup/popup.html",
+    "default_icon": "Simon_listens_placeholder.png"
   },
   "content_scripts": [
     {
