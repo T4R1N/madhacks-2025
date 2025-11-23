@@ -1,3 +1,4 @@
+let simonIsListening = false;
 document.addEventListener('keydown', (e) => {
     chrome.storage.local.get('listenKey').then((result) => {
         if (e.key === result.listenKey) {
@@ -7,10 +8,14 @@ document.addEventListener('keydown', (e) => {
                 // Set the new boolean value
                 chrome.storage.local.set({ listening: newValue });
                 if (newValue) {
-                    alert("Simon is listening");
+                    simonIsListening = true;
+                    recordAudio();
+                    console.log("Simon is listening");
                 }
                 else {
-                    alert("Simon is not listening");
+                    recordAudio();
+                    simonisListening = false;
+                    console.log("Simon is not listening");
                 }
             });
             console.log(`you pressed ${result.listenKey}`);
