@@ -11,8 +11,6 @@
   "action": {
     "default_popup": "popup/popup.html",
     "default_icon": {
-      "16": "Simon_listens_placeholder.png",
-      "32": "Simon_listens_placeholder.png",
       "48": "Simon_listens_placeholder.png"
     }
   },
