@@ -1,5 +1,6 @@
 body {
     background-color: lightblue;
+    width: 600px;
 }
 
 h1 {
@@ -10,12 +11,26 @@ h1 {
 }
 
 li {
-    font-size: 20px;
+    font-size: 15px;
 }
 
 button {
     background-color: yellow;
     font-size: 20px;
+}
+
+#prompt {
+    font: inherit;
+    padding: 4px;
+    min-width: 80px;
+    box-sizing: content-box;
+}
+
+#mirror {
+    position: absolute;
+    visibility: hidden;
+    white-space: pre;
+    font: inherit;
 }
 
 .description {
