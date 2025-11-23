@@ -3,7 +3,7 @@ import {
   functionImplementations
 } from './functions.js';
 
-const GEM_API_KEY = `AIzaSyCFNgJBbM-R0Uptk1UAIGPcNk1rQxJL7A8`;
+const GEM_API_KEY = `AIzaSyCHR0L-P6dX3rjas5mJcWeF7fI_8v5RX6Q`;
 // function saveKey() {
 //   const key = 'sk-AIzaSyCFNgJBbM-R0Uptk1UAIGPcNk1rQxJL7A8';
 //   if (key && key.startsWith('sk-')) {
