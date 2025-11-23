@@ -1,0 +1,24 @@
+{
+  "manifest_version":3,
+  "version":"1.0",
+  "name":"Simon Listens",
+  "description": "Surf the web at the speed of sound",
+  "permissions":["activeTab", "tabs", "storage"],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "action": {
+    "default_popup": "popup/popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"], 
+      "js": ["key_handler.js", "functions.js"]  
+    }
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  }
+}
