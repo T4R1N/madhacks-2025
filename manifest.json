@@ -17,7 +17,9 @@
     "https://*/*"
   ],
   "action": {
-    "default_popup": "popup/popup.html"
+    "default_popup": "popup/popup.html",
+    "default_icon": "Simon_listens_placeholder.png",
+    "default_title": "Click to let Simon Listen"
   },
   "content_scripts": [
     {
