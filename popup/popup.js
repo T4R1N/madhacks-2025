@@ -21,6 +21,9 @@ function setNewSimonButton(e) {
     chrome.storage.local.get('listenKey').then((result) => {
         console.log(`New listen key: ${result.listenKey}`);
     });
+    let indication = document.getElementById('keybindIndicator');
+
+    indication
 
     document.removeEventListener('keydown', setNewSimonButton);
 };

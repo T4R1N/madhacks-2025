@@ -15,7 +15,7 @@ const createNewTabFunctionDeclaration = {
             },
             active: {
                 type: "boolean",
-                description: 'Whether it should be made the current tab or not'
+                description: 'Whether it should be made the current tab or not (true by default)'
             }
         },
         required: ['url', 'active']
