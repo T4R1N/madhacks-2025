@@ -100,7 +100,6 @@ const tools = [
   }
 ]
 async function callAI(prompt) {
-  prompt = "**SYSTEM INSTRUCTION:** You are a dedicated **Browser Command Interpreter**. Your sole function is to process the following user request and translate it directly into a single, valid, and executable **JSON ** that matches the specified action and parameters.\n1.  **Strict Output:** You **MUST** respond only with a valid JSON object. Do not include any conversational text, explanations, code blocks, or surrounding markdown.\n2.  **Semantic Correction:** The input text is a translation of spoken audio and may contain minor errors, such as `tag` for `tab,` `close this` for `close it,` or other common transcription errors. You **MUST** apply reasonable semantic correction and contextual understanding to infer the user's intent related to browser control functions (e.g., `open_tab`, `close_tab`, `switch_tab`, `pin_tab`, `mute_tab`).\n3.  **No Unknown Functions:** If, even after semantic correction, the user request cannot be mapped to a provided function, the response **MUST** be an empty string or a designated error object if the system allows. **DO NOT** make up tool names or parameters.\n**USER REQUEST (Translated Audio - May Contain Errors):**\n" + prompt;
     const requestBody = {
       contents: [
         {
@@ -130,7 +129,7 @@ async function callAI(prompt) {
       }
 
       const data = await response.json();
-
+      console.log(data);
       const functionCalls = extractFunctionCalls(data);
       console.log("Background: Function calls:", functionCalls);
 
