@@ -16,6 +16,7 @@ h1 {
 
 li {
     font-size: 15px;
+    font-family: 'UnboundedFont', serif;
 }
 
 button {
@@ -39,5 +40,13 @@ button {
 
 .description {
     font-size: 20px;
+    font-family: 'UnboundedFont', serif;
+}
+
+.keybindListener {
+    font-family: 'UnboundedFont', serif;
+}
+
+.keybindIndicator {
     font-family: 'UnboundedFont', serif;
 }
