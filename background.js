@@ -36,7 +36,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
 
 async function transcribeAudio(audioBlob) {
-  const fishApiKey = `insert api key here`;
+  const fishApiKey = `AIzaSyCHR0L-P6dX3rjas5mJcWeF7fI_8v5RX6Q`;
   
   console.log("Background: Starting transcription...");
   console.log("Background: Blob size:", audioBlob.size, "type:", audioBlob.type);
