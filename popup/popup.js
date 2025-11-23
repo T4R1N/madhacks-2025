@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", (e) => {
  * 
  * @param {Event} e 
  */
+
+/**
 function setNewSimonButton(e) {
     chrome.storage.local.set({listenKey: e.key});
 
@@ -45,6 +47,7 @@ function listenButtonClicked() {
         }
     });
 };
+*/
 
 document.addEventListener("DOMContentLoaded", () => {
 const input = document.getElementById("prompt");
