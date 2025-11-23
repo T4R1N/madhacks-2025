@@ -25,9 +25,6 @@ function setNewSimonButton(e) {
     document.removeEventListener('keydown', setNewSimonButton);
 };
 
-
-
-
 function listenButtonClicked() {
     let button = document.getElementById('toggleListenButton');
     let indication = document.getElementById('indicator');
@@ -48,3 +45,16 @@ function listenButtonClicked() {
         }
     });
 };
+
+document.addEventListener("DOMContentLoaded", () => {
+const input = document.getElementById("prompt");
+const mirror = document.getElementById("mirror");
+
+function resizeInput() {
+    mirror.textContent = input.value || input.placeholder;
+    input.style.width = mirror.offsetWidth + 12 + "px";
+}
+
+input.addEventListener("input", resizeInput);
+resizeInput();
+});
