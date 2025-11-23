@@ -10,9 +10,7 @@
   ],
   "action": {
     "default_popup": "popup/popup.html",
-    "default_icon": {
-      "48": "Simon_listens_placeholder.png"
-    }
+    "default_icon": "Simon_listens_placeholder.png"
   },
   "content_scripts": [
     {
