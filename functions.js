@@ -15,14 +15,15 @@ const createNewTabFunctionDeclaration = {
             },
             active: {
                 type: "boolean",
-                description: 'Whether it should be made the current tab or not (true by default)'
+                description: 'Whether it should be made the current tab or not (true by default)',
+                default: true
             }
         },
-        required: ['url', 'active']
+        required: ['url']
     }
 };
 
-function createNewTab( url, active ) {
+function createNewTab( url, active = true ) {
     chrome.tabs.create({ url: url }, { active: active });
 };
 
@@ -137,4 +138,22 @@ const muteCertainTabFunctionDeclaration = {
  */
 const setActiveTabFunctionDeclaration = {
 
+}
+
+export const functionDeclarations = [
+    createNewTabFunctionDeclaration,
+    closeActiveTabFunctionDeclaration,
+    muteActiveTabFunctionDeclaration,
+    unmuteActiveTabFunctionDeclaration,
+    pinActiveTabFunctionDeclaration,
+    unpinActiveTabFunctionDeclaration,
+]
+
+export const functionImplementations = {
+    "createNewTab": createNewTab,
+    "closeActiveTab": closeActiveTab,
+    "muteActiveTab": muteActiveTab,
+    "unmuteActiveTab": unmuteActiveTab,
+    "pinActiveTab": pinActiveTab,
+    "unpinActiveTab": unpinActiveTab,
 }
