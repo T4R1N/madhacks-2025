@@ -129,7 +129,7 @@ async function callAI(prompt) {
       }
 
       const data = await response.json();
-
+      console.log(data);
       const functionCalls = extractFunctionCalls(data);
       console.log("Background: Function calls:", functionCalls);
 
