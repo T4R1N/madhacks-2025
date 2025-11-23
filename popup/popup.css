@@ -18,6 +18,20 @@ button {
     font-size: 20px;
 }
 
+#prompt {
+    font: inherit;
+    padding: 4px;
+    min-width: 80px;
+    box-sizing: content-box;
+}
+
+#mirror {
+    position: absolute;
+    visibility: hidden;
+    white-space: pre;
+    font: inherit;
+}
+
 .description {
     font-size: 25px;
 }
