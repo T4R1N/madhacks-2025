@@ -39,6 +39,7 @@ async function transcribeAudio(audioBlob) {
 
   const result = await response.json();
   console.log("Background: Transcription result:", result);
+  callAI(result);
   
   return result;
 }
@@ -73,12 +74,11 @@ function extractFunctionCalls(response) {
   return [];
 }
 
-chrome.commands.onCommand.addListener(async (command) => {
-  if (command === "trigger-ai") {
+async function callAI(prompt) {
     console.log("Command 'trigger-ai' received — running simple test");
     const response = await ai.models.generateContent({
       model: "gemini-2.0-flash",
-      contents: PROMPT,
+      contents: prompt,
       config: {
         tools: [{
           functionDeclarations: functions,
@@ -130,5 +130,4 @@ chrome.commands.onCommand.addListener(async (command) => {
           else console.log("Function call missing url", funcCall);
         }
       }
-    }
-});
+}
