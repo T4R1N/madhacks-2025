@@ -32,7 +32,6 @@ SetupAudio();
 function SetupStream(stream) {
   console.log("5. SetupStream called");
   
-  // Check what MIME types are supported
   const mimeTypes = [
     'audio/webm',
     'audio/webm;codecs=opus',
@@ -57,47 +56,43 @@ function SetupStream(stream) {
     chunks.push(e.data);
   }
   
-  recorder.onstop = e => {
-    console.log("9. Recording stopped. Total chunks:", chunks.length);
+  recorder.onstop = async (e) => { // Make it async again
+  console.log("9. Recording stopped. Total chunks:", chunks.length);
+  
+  if (chunks.length === 0) {
+    alert("No audio data recorded!");
+    return;
+  }
+  
+  const blob = new Blob(chunks, {type: recorder.mimeType});
+  console.log("10. Blob created, size:", blob.size, "bytes, type:", blob.type);
+  chunks = [];
+  
+  // Convert blob to base64
+  const reader = new FileReader();
+  reader.onloadend = () => {
+    const base64Audio = reader.result;
     
-    if (chunks.length === 0) {
-      alert("No audio data recorded!");
-      return;
-    }
-    
-    const blob = new Blob(chunks, {type: recorder.mimeType});
-    console.log("10. Blob created, size:", blob.size, "bytes, type:", blob.type);
-    chunks = [];
-    
-    const audioURL = window.URL.createObjectURL(blob);
-    console.log("11. Audio URL created:", audioURL);
-    
-    const audio = new Audio(audioURL);
-    audio.volume = 1.0;
-    
-    audio.onloadedmetadata = () => {
-      console.log("12. Audio loaded, duration:", audio.duration, "seconds");
-    };
-    
-    audio.onplay = () => {
-      console.log("13. Audio started playing");
-    };
-    
-    audio.onerror = (err) => {
-      console.error("14. Audio playback error:", err);
-    };
-    
-    audio.play()
-      .then(() => console.log("15. Play promise resolved"))
-      .catch(err => console.error("16. Play error:", err));
-    
-    // Also download it
-    const a = document.createElement('a');
-    a.href = audioURL;
-    a.download = `recording-${Date.now()}.webm`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+    console.log("Sending to background for transcription...");
+    chrome.runtime.sendMessage(
+      { 
+        action: "transcribe", 
+        audioData: base64Audio,
+        mimeType: blob.type 
+      },
+      (response) => {
+        if (response && response.success) {
+          alert("Transcription: " + response.result.text);
+          console.log("Duration:", response.result.duration);
+        } else {
+          alert("Transcription failed: " + (response?.error || "Unknown error"));
+          console.error("Error:", response);
+        }
+      }
+    );
+  };
+  reader.readAsDataURL(blob);
+
     console.log("17. Download triggered");
   }
   
@@ -119,12 +114,8 @@ function recordAudio() {
     console.log("20. Starting recording...");
     chunks = [];
     recorder.start();
- //   mic_btn.textContent = "Stop Recording";
-   // mic_btn.style.backgroundColor = "red";
   } else {
     console.log("21. Stopping recording...");
-    recorder.stop();
-   // mic_btn.textContent = "Start Recording";
-   // mic_btn.style.backgroundColor = "";
+    recorder.stop(); // This will trigger onstop which sends to background
   }
 }
