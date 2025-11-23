@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Simon Listens</title>
+        <link rel = "stylesheet" href = "popup.css">
+        <script src="popup.js"></script>
+    </head>
+    <body>
+        <h1>Simon Listens</h1>
+        <p class = "description">With a click of a button Simon will listen to your every request<br>
+            Some of the things Simon can do for you are:
+        </p>
+        <ul>
+            <li>Open Up Tabs</li>
+            <li>Search up Queries</li>
+            <li>Etc...</li>
+        </ul>
+        <div style="text-align: center;">
+            <button id="toggleButton" aria-pressed = "false" onclick="ButtonClicked()">Activate Simon!</button>
+        </div>
+        <h2 id = "indicator" style="color: red;">Simon is NOT Listening</h2>
+        <label for = "prompt">Enter prompt here if you prefer typing:<label>
+        <input type = "text" id = "prompt" placeholder = "Type here...">
+        <span id="mirror"></span>
+    </body>
+</html>
