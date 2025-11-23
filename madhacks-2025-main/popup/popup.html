@@ -15,9 +15,13 @@
             <li>Etc...</li>
         </ul>
         <div style="text-align: center;">
-            <button id="toggleButton" aria-pressed = "false" onclick="ButtonClicked()">Activate Simon!</button>
+            <button id="keybindListener" aria-pressed = "false" >Choose new keybind</button>
+            <h2 id = "keybindIndicator" style="color: black;">Current keybind: </h2>
         </div>
-        <h2 id = "indicator" style="color: red;">Simon is NOT Listening</h2>
+        <div style="text-align: center;">
+            <button id="toggleListenButton" aria-pressed = "false">Activate Simon!</button>
+            <h2 id = "indicator" style="color: red;">Simon is NOT Listening</h2>
+        </div>
         <label for = "prompt">Enter prompt here if you prefer typing:<label>
         <input type = "text" id = "prompt" placeholder = "Type here...">
         <span id="mirror"></span>
