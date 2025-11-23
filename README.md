@@ -1,1 +1,2 @@
-# madhacks-2025
+# Supersurf
+![Supersurf logo](icons/icon-2-512.png)
