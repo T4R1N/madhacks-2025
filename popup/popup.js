@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", (e) => {
  * 
  * @param {Event} e 
  */
+
+
 function setNewSimonButton(e) {
     chrome.storage.local.set({listenKey: e.key});
 
