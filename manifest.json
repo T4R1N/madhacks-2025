@@ -1,7 +1,7 @@
 {
   "manifest_version":3,
   "version":"1.0",
-  "name":"Simon Listens and Responds",
+  "name":"Simon Listens",
   "description": "Browse the web at the speed of sound",
   "permissions":["tabs", "storage"],
   "host_permissions": [
