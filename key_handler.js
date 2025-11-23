@@ -72,7 +72,6 @@ function SetupStream(stream) {
     const audioURL = window.URL.createObjectURL(blob);
     console.log("11. Audio URL created:", audioURL);
     
-    // Play the audio
     const audio = new Audio(audioURL);
     audio.volume = 1.0;
     
